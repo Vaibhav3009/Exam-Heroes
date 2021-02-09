@@ -1,0 +1,60 @@
+{% extends 'base.html' %}
+{% load static %}
+ {% block css %}
+
+ <style>
+ 
+  .kuchbhi {
+    margin-left: 0;
+   
+  }
+
+ 
+  .kuchbhi input {
+   float: right;
+   margin-right: 20%;
+   
+  }
+ 
+
+ </style>
+ {% endblock %}
+{% block content %}
+<section class="page-section" id="contact">
+    <div class="container">
+        <!-- Contact Section Heading-->
+        <br>
+        <h2 class="page-section-heading text-center text-uppercase text-secondary mb-0">Sign Up</h2>
+        <!-- Icon Divider-->
+        <div class="divider-custom">
+            <div class="divider-custom-line"></div>
+            <div class="divider-custom-icon"><i class="fas fa-star"></i></div>
+            <div class="divider-custom-line"></div>
+        </div>
+        <!-- Contact Section Form-->
+        <div class="row">
+            <div class="col-lg-8 mx-auto" style="text-align: center;">
+            
+    <form id="contactForm" action="/accounts/signup/" method="post">
+        {% csrf_token %}
+        <div class="kuchbhi">
+        {% for field in form %}
+        <div style="margin-bottom:7px;">
+            
+            {{ field.errors }}
+            {{ field.label_tag }}  {{ field }}
+        </div>
+    {% endfor %}
+</div>
+        <br>
+        
+        <input class='btn btn-primary' type="submit" value="Signup">
+    </form>
+    <a href="{% url 'accounts:login' %}">Already have an account?</a>
+    </div>
+    </div>
+    </div>
+    </section>
+    
+   
+{% endblock content %}
